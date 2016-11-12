@@ -29,6 +29,7 @@
     app.get('/api/v1/getPDF/:email', (req, res) => {
       let email = req.params.email
       convertToPdf(email)
+      res.send({message: "PDF Created"})
     })
     app.listen(config.port, () => {
         console.log("Application is running on http://localhost:" + config.port + "/");
