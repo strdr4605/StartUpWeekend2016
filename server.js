@@ -7,7 +7,8 @@
         bodyParser = require('body-parser'),
         assert = require('assert'),
         mongoose = require('mongoose'),
-        imageInfoRoutes = require('./routes/ImageInfos');
+        imageInfoRoutes = require('./routes/ImageInfos'),
+        uploadRoutes = require('./routes/upload');
 
     app.use(bodyParser.urlencoded({
         extended: false
@@ -22,6 +23,7 @@
     });
 
     app.use('/api/v1/imageInfo', imageInfoRoutes);
+    app.use('/api/v1/upload', uploadRoutes);
 
     app.listen(config.port, () => {
         console.log("Application is running on http://localhost:" + config.port + "/");
