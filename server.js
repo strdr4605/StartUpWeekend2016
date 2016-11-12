@@ -8,8 +8,10 @@
         assert = require('assert'),
         mongoose = require('mongoose'),
         imageInfoRoutes = require('./routes/ImageInfos'),
-        uploadRoutes = require('./routes/upload');
+        uploadRoutes = require('./routes/upload'),
+        convertToPdf = require('./convertToPdf');
 
+    convertToPdf();
     app.use(bodyParser.urlencoded({
         extended: false
     }));
@@ -22,6 +24,7 @@
         console.log('Successfuly connected to ' + config.database);
     });
 
+    app.use(express.static('public'))
     app.use('/api/v1/imageInfo', imageInfoRoutes);
     app.use('/api/v1/upload', uploadRoutes);
 
