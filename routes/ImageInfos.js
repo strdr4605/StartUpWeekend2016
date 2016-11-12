@@ -16,9 +16,9 @@ router.post('/', (req, res) =>{
   var newInfo = ImageInfo(info);
   newInfo.save(function(err) {
     if (err) throw err;
-    console.log('Parking created!');
+    console.log('ImageInfo created!');
   });
-  res.send({message: 'parking created'});
+  res.send({message: 'Imageinfo created'});
 
 })
 
