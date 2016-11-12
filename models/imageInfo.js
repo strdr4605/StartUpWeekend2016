@@ -2,6 +2,7 @@
     Schema = mongoose.Schema;
 
   let imageInfoSchema = new Schema({
+    email: String,
     url: String,
     title: String,
     height: Number,
