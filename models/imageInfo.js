@@ -8,7 +8,11 @@
     width: Number,
     medium: String,
     material: String,
-    price: Number
+    price: Number,
+    author: String,
+    age: Number,
+    email: String,
+    size:[Number]
   },
 {
   collection: 'imageInfo'
