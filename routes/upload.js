@@ -1,17 +1,28 @@
 const router = require('express').Router()
 var multer = require('multer')
 
+
+router.param('email',  function (req, res, next, name) {
+  global.mail = name
+  next();
+});
+fileList = []
 var storage = multer.diskStorage({
   destination: './public/images/',
   filename: function (req, file, cb) {
-      cb(null, Date.now() + '-' + file.originalname)
+      let name = mail + '-' + Date.now() + '.' + file.originalname.split('.')[1]
+      fileList.push(name)
+      cb(null, name)
     }
-})
+});
 
-var upload = multer({ storage: storage })
+var upload = multer({ storage: storage });
 
-router.post('/', upload.array('avatar', 20), function (req, res, next) {
+router.post('/:email',upload.array('avatar', 20), function (req, res, next) {
       res.send({message: "Files saved"})
+      console.log(fileList)
     });
+
+
 
 module.exports = router
